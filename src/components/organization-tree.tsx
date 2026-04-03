@@ -7,17 +7,20 @@ function TreeNode({
   node,
   depth,
   currentSlug,
+  linkMode,
 }: {
   node: OrganizationTreeNode;
   depth: number;
   currentSlug?: string;
+  linkMode: "board" | "index";
 }) {
   const isActive = node.slug === currentSlug;
+  const href = linkMode === "index" ? `#org-${node.slug}` : `/boards/${node.slug}`;
 
   return (
     <div className="space-y-3">
       <Link
-        href={`/boards/${node.slug}`}
+        href={href}
         className={cn(
           "flex items-center justify-between rounded-2xl border border-transparent bg-white px-4 py-3 text-sm font-semibold transition hover:border-[var(--color-accent)]",
           isActive &&
@@ -38,6 +41,7 @@ function TreeNode({
               node={child}
               depth={depth + 1}
               currentSlug={currentSlug}
+              linkMode={linkMode}
             />
           ))}
         </div>
@@ -49,14 +53,22 @@ function TreeNode({
 export function OrganizationTree({
   tree,
   currentSlug,
+  linkMode = "board",
 }: {
   tree: OrganizationTreeNode[];
   currentSlug?: string;
+  linkMode?: "board" | "index";
 }) {
   return (
     <div className="space-y-4">
       {tree.map((node) => (
-        <TreeNode key={node.id} node={node} depth={0} currentSlug={currentSlug} />
+        <TreeNode
+          key={node.id}
+          node={node}
+          depth={0}
+          currentSlug={currentSlug}
+          linkMode={linkMode}
+        />
       ))}
     </div>
   );

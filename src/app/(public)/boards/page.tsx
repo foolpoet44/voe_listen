@@ -37,7 +37,7 @@ export default function BoardsPage() {
             트리를 따라 이동하면 해당 조직 보드로 바로 이동합니다.
           </p>
           <div className="mt-6">
-            <OrganizationTree tree={tree} />
+            <OrganizationTree tree={tree} linkMode="index" />
           </div>
         </Card>
 
@@ -45,7 +45,7 @@ export default function BoardsPage() {
           {tree.map((node) => {
             const stats = getOrgStats(node.id);
             return (
-              <Card key={node.id} className="h-full">
+              <Card key={node.id} id={`org-${node.slug}`} className="org-card h-full scroll-mt-24">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div>

@@ -19,15 +19,33 @@ export function OrganizationSelector({
   placeholder?: string;
 }) {
   const options = React.useMemo(() => {
-    const rows: { id: string; name: string; depth: number }[] = [];
-    const walk = (node: OrganizationTreeNode, depth: number) => {
-      rows.push({ id: node.id, name: node.name, depth });
-      node.children.forEach((child) => walk(child, depth + 1));
+    const rows: {
+      id: string;
+      name: string;
+      depth: number;
+      parentName?: string;
+    }[] = [];
+
+    const walk = (node: OrganizationTreeNode, depth: number, parentName?: string) => {
+      rows.push({ id: node.id, name: node.name, depth, parentName });
+      node.children.forEach((child) => walk(child, depth + 1, node.name));
     };
 
     tree.forEach((node) => walk(node, 0));
     return rows;
   }, [tree]);
+
+  const grouped = React.useMemo(() => {
+    const groups = new Map<string, typeof options>();
+    options.forEach((option) => {
+      const key = option.parentName ?? "root";
+      if (!groups.has(key)) {
+        groups.set(key, []);
+      }
+      groups.get(key)?.push(option);
+    });
+    return groups;
+  }, [options]);
 
   const placeholderLabel = includeAll ? allLabel : placeholder;
 
@@ -37,13 +55,26 @@ export function OrganizationSelector({
       onChange={(event) => onChange?.(event.target.value)}
     >
       <option value="">{placeholderLabel}</option>
-      {options.map((option) => (
-        <option key={option.id} value={option.id}>
-          {"— ".repeat(option.depth)}{option.name}
-        </option>
-      ))}
+      {Array.from(grouped.entries()).map(([groupName, items]) => {
+        if (groupName === "root") {
+          return items.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.name}
+            </option>
+          ));
+        }
+
+        return (
+          <optgroup key={groupName} label={groupName}>
+            {items.map((option) => (
+              <option key={option.id} value={option.id}>
+                {"— ".repeat(Math.max(0, option.depth - 1))}
+                {option.name}
+              </option>
+            ))}
+          </optgroup>
+        );
+      })}
     </Select>
   );
 }
-
-
