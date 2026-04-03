@@ -1,0 +1,66 @@
+﻿import { ActionItem } from "@/types";
+
+export const actionItems: ActionItem[] = [
+  {
+    id: "action-1",
+    title: "일정 변경 공지 리드타임 기준 수립",
+    description:
+      "검사/장비 교체 일정 변경 시 최소 5영업일 전 공지 기준을 확정합니다.",
+    owner: "검사기술담당",
+    dueDate: "2026-04-12",
+    relatedClusterId: "cluster-1",
+    progressStatus: "in_progress",
+    organizationId: "org-1-2",
+  },
+  {
+    id: "action-2",
+    title: "데이터 정합성 주간 점검",
+    description:
+      "스마트팩토리 데이터 정합성 점검을 주간 루틴으로 운영합니다.",
+    owner: "생산시스템솔루션담당",
+    dueDate: "2026-04-08",
+    relatedClusterId: "cluster-2",
+    progressStatus: "planned",
+    organizationId: "org-3-1",
+  },
+  {
+    id: "action-3",
+    title: "협업 채널 통합 가이드",
+    description: "센터 공통 협업 채널과 운영 규칙을 확정합니다.",
+    owner: "생산혁신센터",
+    dueDate: "2026-04-18",
+    relatedClusterId: "cluster-3",
+    progressStatus: "planned",
+    organizationId: "org-2",
+  },
+  {
+    id: "action-4",
+    title: "승인 단계 위험도 기준 정립",
+    description: "배포 승인 단계를 위험도 기준으로 재구성합니다.",
+    owner: "장비SW/제어담당",
+    dueDate: "2026-04-20",
+    relatedClusterId: "cluster-4",
+    progressStatus: "in_progress",
+    organizationId: "org-1-4",
+  },
+  {
+    id: "action-5",
+    title: "리소스 공유 SLA 정의",
+    description: "센터 간 리소스 요청/승인 SLA와 경로를 문서화합니다.",
+    owner: "장비기술센터",
+    dueDate: "2026-04-15",
+    relatedClusterId: "cluster-5",
+    progressStatus: "blocked",
+    organizationId: "org-1",
+  },
+  {
+    id: "action-6",
+    title: "단기 대체 인력 풀 구축",
+    description: "제조AX 추진실의 핵심 공백 대응 인력 풀을 구성합니다.",
+    owner: "제조AX추진실",
+    dueDate: "2026-04-05",
+    relatedClusterId: "cluster-6",
+    progressStatus: "in_progress",
+    organizationId: "org-2-3",
+  },
+];

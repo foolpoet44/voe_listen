@@ -1,0 +1,108 @@
+﻿import { InsightCluster } from "@/types";
+
+export const insightClusters: InsightCluster[] = [
+  {
+    id: "cluster-1",
+    theme: "일정 변경 공지 지연",
+    summary:
+      "검사/장비 교체 일정 변경이 늦게 전달되어 현장 혼선이 반복됩니다. 공지 리드타임을 고정하면 신뢰가 높아집니다.",
+    relatedEntryIds: ["voice-1", "voice-18"],
+    volume: 8,
+    sentimentScore: 0.28,
+    urgencyScore: 0.72,
+    productivityImpact: "현장 혼선과 야근 증가",
+    suggestedAction: "일정 변경 공지 기준(최소 5영업일 전)과 승인 경로를 표준화",
+    organizationId: "org-1-2",
+  },
+  {
+    id: "cluster-2",
+    theme: "데이터 정합성 개선",
+    summary:
+      "스마트팩토리 데이터와 대시보드 간 불일치가 신뢰를 떨어뜨립니다. 주간 정합성 점검이 요구됩니다.",
+    relatedEntryIds: ["voice-6"],
+    volume: 5,
+    sentimentScore: 0.35,
+    urgencyScore: 0.64,
+    productivityImpact: "의사결정 지연 및 추가 검증 작업",
+    suggestedAction: "정합성 지표를 KPI로 설정하고 알림 체계를 구축",
+    organizationId: "org-3-1",
+  },
+  {
+    id: "cluster-3",
+    theme: "협업 채널 표준화",
+    summary:
+      "프로젝트별로 협업 채널이 달라 메시지 누락이 발생합니다. 공식 채널을 통합해야 합니다.",
+    relatedEntryIds: ["voice-4", "voice-16"],
+    volume: 6,
+    sentimentScore: 0.44,
+    urgencyScore: 0.55,
+    productivityImpact: "정보 누락 및 회의 증가",
+    suggestedAction: "센터 공통 협업 채널과 운영 규칙을 지정",
+    organizationId: "org-2",
+  },
+  {
+    id: "cluster-4",
+    theme: "업무 승인 단계 단축",
+    summary:
+      "배포 승인 단계가 많아 리드타임이 길어집니다. 위험도 기반 승인 체계가 필요합니다.",
+    relatedEntryIds: ["voice-2"],
+    volume: 4,
+    sentimentScore: 0.62,
+    urgencyScore: 0.38,
+    productivityImpact: "배포 지연과 재작업",
+    suggestedAction: "변경 위험도에 따른 승인 레벨 재정의",
+    organizationId: "org-1-4",
+  },
+  {
+    id: "cluster-5",
+    theme: "리소스 공유 기준 부재",
+    summary:
+      "센터 간 리소스 공유 요청이 기준 없이 지연됩니다. 승인 기준이 명확해야 합니다.",
+    relatedEntryIds: ["voice-16"],
+    volume: 5,
+    sentimentScore: 0.49,
+    urgencyScore: 0.6,
+    productivityImpact: "프로젝트 착수 지연",
+    suggestedAction: "공유 요청 SLA와 승인 기준 공개",
+    organizationId: "org-1",
+  },
+  {
+    id: "cluster-6",
+    theme: "핵심 인력 공백 대응",
+    summary:
+      "핵심 인력 공백으로 일정이 밀립니다. 단기 대응 프로세스가 필요합니다.",
+    relatedEntryIds: ["voice-17"],
+    volume: 3,
+    sentimentScore: 0.22,
+    urgencyScore: 0.8,
+    productivityImpact: "일정 지연 및 품질 리스크",
+    suggestedAction: "단기 대체 인력 풀과 지원 프로세스 마련",
+    organizationId: "org-2-3",
+  },
+  {
+    id: "cluster-7",
+    theme: "업무 집중 시간 보호",
+    summary:
+      "회의가 분산되어 집중 시간이 확보되지 않습니다. 집중 시간 블록이 필요합니다.",
+    relatedEntryIds: ["voice-20"],
+    volume: 4,
+    sentimentScore: 0.55,
+    urgencyScore: 0.46,
+    productivityImpact: "깊은 작업 감소",
+    suggestedAction: "주 2회 2시간 집중 시간 블록을 도입",
+    organizationId: "org-7",
+  },
+  {
+    id: "cluster-8",
+    theme: "업무 반복 입력",
+    summary:
+      "경영관리 보고서에 반복 입력이 많습니다. 자동화 여지가 큽니다.",
+    relatedEntryIds: ["voice-15"],
+    volume: 6,
+    sentimentScore: 0.31,
+    urgencyScore: 0.52,
+    productivityImpact: "비부가가치 작업 증가",
+    suggestedAction: "보고서 지표 자동 연동 및 템플릿 통합",
+    organizationId: "org-9",
+  },
+];
